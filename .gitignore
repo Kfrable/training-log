@@ -19,3 +19,5 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+NODE_ENV = https://git.heroku.com/warm-anchorage-78951.git

@@ -12,11 +12,9 @@
     "react-scripts": "1.1.0"
   },
   "scripts": {
-    "react-scripts": "1.1.0",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
-  },
-  "homepage": "https://warm-anchorage-78951.herokuapp.com/"
+  }
 }

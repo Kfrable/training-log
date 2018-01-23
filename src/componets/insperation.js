@@ -1,10 +1,14 @@
 import React,{Component} from 'react';
 import axios from 'axios';
+// import Footer from '../componets/footer'
+import {
+  Carousel,Item,Caption,wellInstance,Well,Jumbotron,Image
+} from 'react-bootstrap';
 
 const style={
 	border:'solid black',
 	height:'388px',
-	width:'930px',
+	width:'75%',
 	margin:'0 auto',
 	marginTop: '117px',
 	opacity:'.8',
@@ -13,10 +17,14 @@ const style={
 
 const textStyle={
 	textAlign:'center',
-	fontSize:'64px',
-	padding: '40px',
+	// fontSize:'64px',
 	color:'black',
 	fontFamily:"fantasy"
+}
+
+const imgStyle={
+	height:'400px',
+	width:'50%'
 }
 
 
@@ -51,8 +59,12 @@ class Insperation extends Component{
 				<div style={style}>
 
 				    {this.quote()}
-				    <p style={textStyle}>{this.state.theQuote}</p>
+				    <Jumbotron> <p style={textStyle}>{this.state.theQuote}</p></Jumbotron>
+				    
 				</div>
+
+				
+				
 			</div>
 			)
 	}

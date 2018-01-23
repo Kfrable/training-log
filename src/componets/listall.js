@@ -2,11 +2,19 @@ import React,{Component} from 'react';
 import axios from 'axios'
 import Single from '../componets/single'
 import {BrowserRouter as Router, Route, Link, Switch, NavLink} from 'react-router-dom';
+import {Panel,Heading,Title,Body,Modal,Header,Footer,Button,Tooltip,
+ OverlayTrigger,Well} from 'react-bootstrap';
+
+ const tooltip = (
+  <Tooltip id="tooltip">
+    <strong>Wanna Add Something</strong> press on this.
+  </Tooltip>
+);
 
 const style = {
   border:'black solid',
-  height:'286px',
-  width:'187px',
+  height:'483px',
+  width:'242px',
   display:'inline-block',
   margin:'10px',
   textAlign:'center',
@@ -15,7 +23,17 @@ const style = {
 }
 
 const style2={
-	textAlign:'center'
+	textAlign:'center',
+	color:'white'
+}
+const style3={
+	marginLeft:'47%'
+}
+
+const style4={
+	
+	width:'135px',
+	marginLeft:'22px'
 }
 
 const createStyle={
@@ -23,12 +41,37 @@ const createStyle={
 	height: '183px',
     border: 'white solid',
     width: '218px',
-    float:'right'
+    float:'right',
+    marginRight:'69px'
 }
 
 const Align={
 	textAlign:'center'
 }
+
+const editStyle={
+	color:'white',
+	float: 'right',
+	width:'83px',
+	marginRight:'7px'
+}
+
+const editStyle2={
+	color:'white'
+}
+
+const deleteStyle={
+	float:'left',
+	width:'83px',
+	marginLeft:'7px'
+}
+
+const bufferDiv={
+	
+	height:'66px'
+}
+
+
 
 class All extends Component{
 	constructor(props){
@@ -43,6 +86,8 @@ class All extends Component{
 		this.handleWeight = this.handleWeight.bind(this);
 		this.handleReps = this.handleReps.bind(this);
 		this.handleSets = this.handleSets.bind(this);
+		this.close = this.close.bind(this);
+		this.han = this.han.bind(this);
 
 	}
 
@@ -55,11 +100,10 @@ class All extends Component{
 			
 			this.setState({
 				all:res.data.data,
-				exercise:this.props.match.params.exercise
+				exercise:this.props.match.params.exercise,
+				url:res.data.data[0].url
 			})
-			let ok = Date.parse(res.data.data[0].ts)
-			// let date = new Date(ok)
-			// let date = new Date(ok).toString()
+			
 		})
 
 
@@ -73,15 +117,43 @@ class All extends Component{
 		 let n = date.toDateString()
 
     
-      return(<form key={i} style={style} onClick={this.gettingOne}> <h1 style={style2}>{array.weight}</h1> 
-        <h1 style={style2}>{array.reps}</h1> 
-        <h1 style={style2}>{array.sets}</h1>
-        <li style={style2}>{n}</li>
-        
-        
-         
-        <Link to={`/${this.props.match.params.exercise}/${array.id}`}>edit</Link>
-        <h6 id={array.id} onClick={this.handleClick}>Delete</h6>
+      return(<form key={i} style={style} onClick={this.gettingOne}> 
+
+        <Panel>
+			<Panel.Heading>
+				<Panel.Title componentClass="h3">
+					Weight
+				</Panel.Title>
+			</Panel.Heading>
+			<Panel.Body>{array.weight}</Panel.Body>
+		</Panel>
+		<Panel>
+			<Panel.Heading>
+				<Panel.Title componentClass="h3">
+					Reps
+				</Panel.Title>
+			</Panel.Heading>
+			<Panel.Body>{array.reps}</Panel.Body>
+			</Panel>
+			<Panel>
+			<Panel.Heading>
+				<Panel.Title componentClass="h3">
+					sets
+				</Panel.Title>
+			</Panel.Heading>
+			<Panel.Body>{array.sets}</Panel.Body>
+			</Panel>
+			<Panel>
+			<Panel.Heading>
+				<Panel.Title componentClass="h3">
+					Date
+				</Panel.Title>
+			</Panel.Heading>
+			<Panel.Body>{n}</Panel.Body>
+			</Panel>
+			<Button bsStyle="danger" id={array.id} onClick={this.handleClick} style={deleteStyle}>DELETE</Button>
+			<Button bsStyle="primary" style={editStyle}><Link to={`/${this.props.match.params.exercise}/${array.id}`} style={editStyle2}>EDIT</Link></Button>
+			
         </form>)
     })
     return data
@@ -118,7 +190,7 @@ handleSets(e){
 }
 create(e){
 	e.preventdefault
-	console.log(this.state.sets)
+	
 axios({
   method: 'POST',
   url: `https://secret-ridge-98402.herokuapp.com/${this.props.match.params.exercise}`,
@@ -131,23 +203,64 @@ axios({
   console.log("done");
 });
 }
+
+
+
+han(){
+	this.setState({ showModal: true });
+	}
+close(){
+	this.setState({
+		showModal:false
+	})
+}
+	
+	
+		
+
 render(){
 	
 	return(
 
 			<div>
+			
+			<a href={this.state.url}>Form</a>
+			
 
-				<div style={createStyle}>
-    			<input style={style2} name='weight' type='number' placeholder='weight' onChange={this.handleWeight}/>
-  				<input style={style2} name='reps' type='number' placeholder='reps' onChange={this.handleReps}/>
-  				<input style={style2} name='sets' type='number' placeholder='sets' onChange={this.handleSets}/>
-  				<input type='submit' value='Submit!' onClick={this.create}/>
-				</div>
+			<h1 style={style2}>{this.props.match.params.exercise}</h1>
+
+			<OverlayTrigger placement="right" overlay={tooltip}>
+			<Button bsStyle="primary" style={style3}onClick={this.han}>ADD ENTRY</Button>
+				
+			</OverlayTrigger>
+			
+				
 
 			<div style={Align}>{this.listall()}</div>
 
 			
-			
+			<Modal
+				show={this.state.showModal} onHide={this.Close}
+			>
+				<Modal.Header>
+					<Modal.Title id="contained-modal-title-sm">Add Entry</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>
+					
+					
+		        <input  name='weight' type='number' placeholder='weight' onChange={this.handleWeight}/>
+  				<input  name='reps' type='number' placeholder='reps' onChange={this.handleReps}/>
+  				<input  name='sets' type='number' placeholder='sets' onChange={this.handleSets}/>
+
+
+				</Modal.Body>
+				<Modal.Footer>
+					<Button onClick={this.close}>Close</Button>
+					<Button onClick={this.create}>Add</Button>
+				</Modal.Footer>
+			</Modal>
+
+			<div style={bufferDiv}></div>
 			 </div>
 		)
 }

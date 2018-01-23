@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {BrowserRouter as Router, Route, Link, Switch, NavLink} from 'react-router-dom'
+
 import {
   Bootstrap,
   Button,
@@ -10,12 +10,22 @@ import {
   Navbar,
   NavDropdown,
   FormGroup,
-  FormControl
+  FormControl,
+  Tooltip,
+ OverlayTrigger
 } from 'react-bootstrap';
+
+  const myWeight = 260;
+ const tooltip = (
+  <Tooltip id="tooltip">
+    <strong>Alan Thrall</strong> youtube page.
+  </Tooltip>
+);
 
 class Nave extends Component {
   constructor(props) {
     super(props)
+    
 
   }
 
@@ -24,10 +34,19 @@ class Nave extends Component {
       <div className="header-wrapper">
 
       <Navbar inverse collapseOnSelect>
+      <Nav pullRight>
+      
+        <NavItem >
+          My Weight:   {myWeight} lbs
+        </NavItem>
+        
+        
+      </Nav>
     <Navbar.Header>
       <Navbar.Brand>
-       <a href="/">Training Log</a>
+             <a href="/">Training Log</a>
       </Navbar.Brand>
+      
       <Navbar.Toggle />
     </Navbar.Header>
     <Navbar.Collapse>
@@ -47,8 +66,19 @@ class Nave extends Component {
                  <MenuItem key={11} href='/sit-ups' value='sit-ups' >Sit Ups</MenuItem>
                  <MenuItem key={12} href='/squat' value='squat' >Squats</MenuItem>
         </NavDropdown>
+
       </Nav>
+      <Nav pullRight>
+      <OverlayTrigger placement="left" overlay={tooltip}>
+        <NavItem eventKey={1} href="https://www.youtube.com/user/athrall7">
+          Alan Thrall
+        </NavItem>
+        </OverlayTrigger>
+        
+      </Nav>
+
     </Navbar.Collapse>
+    
   </Navbar>
 
       

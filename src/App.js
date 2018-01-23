@@ -1,33 +1,34 @@
 import React, { Component } from 'react';
-import axios from 'axios'
-import {BrowserRouter as Router, Route, Link, Switch, NavLink} from 'react-router-dom';
+
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import All from './componets/listall'
 import Insperation from './componets/insperation'
 import Nave from './componets/nav'
 import Single from './componets/single'
-import Add from './componets/add'
+import Footer from './componets/footer'
+
+
+
 
 const backGroundStyle={
   backgroundImage:"url('http://www.dohertysgym.com/wp-content/uploads/Dohertys-Gym-24-7-Campbellfield-img15-min.jpg')",
   backgroundRepeat:'no-repeat',
-  height: '760px',
-  backgroundSize: 'cover'
+  
+   backgroundSize: 'cover',
+   
+}
+
+const bufferDiv={
+  
+  height:'204px'
 }
 
 class App extends Component {
-  constructor(){
-    super()
-    
-  }
-
-
-
-
   
-
   
   render() {
     
+     
     return (
       
       <div className="App" style={backGroundStyle}>
@@ -50,7 +51,8 @@ class App extends Component {
         </Switch>
         </div>
         </Router>
-
+        <div style={bufferDiv}></div>
+        <Footer/>
         
       </div>
     );

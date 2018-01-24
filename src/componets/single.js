@@ -29,6 +29,10 @@ const textStyle={
 	textAlign:'center',
 	color:'black'
 }
+const textStyle1={
+	textAlign:'center',
+	color:'white'
+}
 
 
 
@@ -131,7 +135,7 @@ class Single extends Component{
 		return(
 			<div>
 				
-				<h1 style={textStyle}>EDIT</h1>
+				<h1 style={textStyle1}>EDIT</h1>
 				<form  style={stylePannel} > 
 
         <Panel>

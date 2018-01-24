@@ -1,15 +1,22 @@
 import React,{Component} from 'react';
 import axios from 'axios'
 import Single from '../componets/single'
+import Delete from '../componets/delete'
 import {BrowserRouter as Router, Route, Link, Switch, NavLink} from 'react-router-dom';
 import {Panel,Heading,Title,Body,Modal,Header,Footer,Button,Tooltip,
- OverlayTrigger,Well} from 'react-bootstrap';
+ OverlayTrigger,Well,Alert} from 'react-bootstrap';
 
  const tooltip = (
   <Tooltip id="tooltip">
     <strong>Wanna Add Something</strong> press on this.
   </Tooltip>
 );
+
+const tooltip2 = (
+  <Tooltip id="tooltip">
+    <strong>SEE HOW IT'S DONE</strong> press on this.
+  </Tooltip>
+); 
 
 const style = {
   border:'black solid',
@@ -100,6 +107,13 @@ class All extends Component{
 		this.handleSets = this.handleSets.bind(this);
 		this.close = this.close.bind(this);
 		this.han = this.han.bind(this);
+		this.getRidOfIt = this.getRidOfIt.bind(this);
+		this.deleteModel = this.deleteModel.bind(this);
+
+		this.handleAlertShow = this.handleAlertShow.bind(this);
+		this.handleAlertDismiss = this.handleAlertDismiss.bind(this);
+		
+
 
 	}
 
@@ -163,7 +177,7 @@ class All extends Component{
 			</Panel.Heading>
 			<Panel.Body>{n}</Panel.Body>
 			</Panel>
-			<Button bsStyle="danger" id={array.id} onClick={this.handleClick} style={deleteStyle}>DELETE</Button>
+			<Button bsStyle="danger" id={array.id} onClick={this.handleAlertShow} style={deleteStyle}>DELETE</Button>
 			<Button bsStyle="primary" style={editStyle}><Link to={`/${this.props.match.params.exercise}/${array.id}`} style={editStyle2}>EDIT</Link></Button>
 			
         </form>)
@@ -177,12 +191,27 @@ class All extends Component{
   }
 }
 
-handleClick(e){
-	e.preventdefault
-	console.log(e.target.id)
-	axios.delete(`https://secret-ridge-98402.herokuapp.com/${this.props.match.params.exercise}/${e.target.id}`)
+deleteModel(e){
+	
+
+
 }
 
+handleClick(e){
+	
+	 e.preventdefault
+	 console.log(this.state.individualId,'<-----')
+	 axios.delete(`https://secret-ridge-98402.herokuapp.com/${this.props.match.params.exercise}/${this.state.individualId}`)
+	 this.setState({ 
+	 	modal: false 
+	 });
+}
+
+getRidOfIt(e){
+     e.preventdefault
+	 console.log(e.target.id)
+	 axios.delete(`https://secret-ridge-98402.herokuapp.com/${this.props.match.params.exercise}/${e.target.id}`)
+}
 handleWeight(e){
 	this.setState({
 		weight:e.target.value
@@ -214,6 +243,9 @@ axios({
 }).then(()=> {
   console.log("done");
 });
+this.setState({
+	showModal:false
+})
 }
 
 
@@ -221,31 +253,46 @@ axios({
 han(){
 	this.setState({ showModal: true });
 	}
+
 close(){
 	this.setState({
-		showModal:false
+		showModal:false,
+		modal:false
 	})
 }
-	
+
+handleAlertDismiss() {
+		this.setState({ alertVisible: false });
+	}
+
+	handleAlertShow(e) {
+		this.setState({ modal: true ,
+						individualId:e.target.id,
+						exercise:this.props.match.params.exercise});
+		console.log(this.state.individualId)
+	}
 	
 		
 
 render(){
-	
+	const show = this.state.modal
 	return(
-
+		
 			<div>
 			
 
 			<h1 style={style2}>{this.props.match.params.exercise}</h1>
 			<div style={buttonDiv}>
-			<OverlayTrigger placement="right" overlay={tooltip}>
+			<OverlayTrigger placement="left" overlay={tooltip}>
 
 			<Button bsStyle="primary" style={style3}onClick={this.han}>ADD ENTRY</Button>
 			
 				
 			</OverlayTrigger>
+
+			<OverlayTrigger placement="right" overlay={tooltip2}>
 			<a href={this.state.url}><Button bsStyle="primary" style={style3}>FORM</Button></a>
+			</OverlayTrigger>
 			</div>
 
 			<div style={Align}>{this.listall()}</div>
@@ -272,6 +319,33 @@ render(){
 				</Modal.Footer>
 			</Modal>
 
+
+				<Modal
+				show={this.state.modal} onHide={this.Close}
+			>
+				<Modal.Header>
+					<Modal.Title id="contained-modal-title-sm">YOOOOOOOO</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>
+					
+					
+		        <p>You sure you want to delete</p>
+
+
+				</Modal.Body>
+				<Modal.Footer>
+					<Button onClick={this.close}>Close</Button>
+					<Button onClick={this.handleClick}>DELETE</Button>
+				</Modal.Footer>
+			</Modal>
+			
+				
+
+				
+			
+		
+			
+			
 			<div style={bufferDiv}></div>
 			 </div>
 		)

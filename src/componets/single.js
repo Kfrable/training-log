@@ -144,7 +144,7 @@ class Single extends Component{
 					Weight
 				</Panel.Title>
 			</Panel.Heading>
-			<Panel.Body><input type="number" style={textStyle} value={this.state.weight} onChange={this.handleWeight}/></Panel.Body>
+			<Panel.Body><input type="number" placeholder='Weight' style={textStyle} value={this.state.weight} onChange={this.handleWeight}/></Panel.Body>
 		</Panel>
 		<Panel>
 			<Panel.Heading>

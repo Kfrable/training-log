@@ -16,6 +16,8 @@ import {
 } from 'react-bootstrap';
 
   const myWeight = 260;
+
+
  const tooltip = (
   <Tooltip id="tooltip">
     <strong>Alan Thrall</strong> youtube page.
@@ -36,7 +38,7 @@ class Nave extends Component {
       <Navbar inverse collapseOnSelect>
       <Nav pullRight>
       
-        <NavItem >
+        <NavItem href='/profile/profile/profile'>
           My Weight:   {myWeight} lbs
         </NavItem>
         

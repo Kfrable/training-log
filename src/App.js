@@ -6,6 +6,7 @@ import Insperation from './componets/insperation'
 import Nave from './componets/nav'
 import Single from './componets/single'
 import Footer from './componets/footer'
+import Profile from './componets/profile'
 
 
 
@@ -45,6 +46,7 @@ class App extends Component {
           <Route exact path='/' component={Insperation} />
           <Route exact path='/:exercise'  component={All} />
           <Route exact path='/:exercise/:id'  component={Single} />
+          <Route exact path='/profile/profile/profile'  component={Profile} />
           
 
           

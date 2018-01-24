@@ -19,7 +19,8 @@ const textStyle={
 	textAlign:'center',
 	// fontSize:'64px',
 	color:'black',
-	fontFamily:"fantasy"
+	fontFamily:"fantasy",
+	fontSize:'38px'
 }
 
 const imgStyle={

@@ -90,6 +90,12 @@ const buttonDiv={
 	textAlign:'center'
 }
 
+const modalStyle={
+	textAlign:'center',
+	backgroundColor:'red',
+	color:'white'
+}
+
 
 
 class All extends Component{
@@ -321,21 +327,20 @@ render(){
 
 
 				<Modal
-				show={this.state.modal} onHide={this.Close}
-			>
+				show={this.state.modal} onHide={this.Close} bsStyle="warning">
 				<Modal.Header>
-					<Modal.Title id="contained-modal-title-sm">YOOOOOOOO</Modal.Title>
+					<Modal.Title id="contained-modal-title-sm" style={modalStyle}>YOOOOOOOO HOMEGIRL!</Modal.Title>
 				</Modal.Header>
 				<Modal.Body>
 					
 					
-		        <p>You sure you want to delete</p>
+		        <p style={buttonDiv}>Are you sure you want to delete this entry?</p>
 
 
 				</Modal.Body>
 				<Modal.Footer>
 					<Button onClick={this.close}>Close</Button>
-					<Button onClick={this.handleClick}>DELETE</Button>
+					<Button onClick={this.handleClick} bsStyle="danger">DELETE</Button>
 				</Modal.Footer>
 			</Modal>
 			

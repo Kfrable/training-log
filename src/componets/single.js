@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import axios from 'axios';
 import {BrowserRouter as Router, Route, Link, Switch, NavLink} from 'react-router-dom';
-import {FormControl,FormGroup,Button} from 'react-bootstrap'
+import {FormControl,FormGroup,Button,Well,Panel,Heading,Body,Title} from 'react-bootstrap'
 
 const editStyle={
 	textAlign:'center'
@@ -30,12 +30,31 @@ const textStyle={
 	color:'black'
 }
 
+
+
 const backStyle={
+	
+	width:'87px',
 	color:'black'
+}
+const back ={
+	width:'87px'
 }
 
 const submitStyle={
-	float:'right'
+	float:'right',
+	width:'87px',
+	marginRight:'54px'
+}
+
+const stylePannel={
+	margin:'0 auto',
+	border:'black solid',
+  height:'483px',
+  width:'348px',
+  textAlign:'center',
+  backgroundColor:'white',
+  opacity: '.8'
 }
 
 class Single extends Component{
@@ -113,27 +132,38 @@ class Single extends Component{
 			<div>
 				
 				<h1 style={textStyle}>EDIT</h1>
-  				<div style={changedStyle}>
-  				<form style={changedStyle}>
-  				
-  				<h1 style={textStyle}>Weight</h1>
-					<FormGroup bsSize="large">
-						<FormControl type="number" placeholder="Weight" style={textStyle} value={this.state.weight} onChange={this.handleWeight}/>
-					</FormGroup>
-					<h1 style={textStyle} >reps</h1>
-					<FormGroup bsSize="large">
-						<FormControl type="number" placeholder="Reps" style={textStyle} value={this.state.reps} onChange={this.handleReps}/>
-					</FormGroup>
-					<h1 style={textStyle} >Sets</h1>
-					<FormGroup bsSize="large">
-						<FormControl type="number" placeholder="Sets" style={textStyle}  value={this.state.sets} onChange={this.handleSets}/>
-					</FormGroup>
-				</form>
-				
-				
-				<Button bsStyle="primary"><Link to={`/${this.props.match.params.exercise}`} style={backStyle}> &larr;BACK</Link></Button>
-				<Button bsStyle="primary" style={submitStyle} onClick={this.editing}>SUBMIT</Button>
-				</div>
+				<form  style={stylePannel} > 
+
+        <Panel>
+			<Panel.Heading>
+				<Panel.Title componentClass="h3">
+					Weight
+				</Panel.Title>
+			</Panel.Heading>
+			<Panel.Body><input type="number" style={textStyle} value={this.state.weight} onChange={this.handleWeight}/></Panel.Body>
+		</Panel>
+		<Panel>
+			<Panel.Heading>
+				<Panel.Title componentClass="h3">
+					Reps
+				</Panel.Title>
+			</Panel.Heading>
+			<Panel.Body><input type="number" placeholder="Reps" style={textStyle} value={this.state.reps} onChange={this.handleReps}/></Panel.Body>
+			</Panel>
+			<Panel>
+			<Panel.Heading>
+				<Panel.Title componentClass="h3">
+					sets
+				</Panel.Title>
+			</Panel.Heading>
+			<Panel.Body><input type="number" placeholder="Sets" style={textStyle}  value={this.state.sets} onChange={this.handleSets}/></Panel.Body>
+			</Panel>
+			
+			<Button bsStyle="primary" style={back}><Link to={`/${this.props.match.params.exercise}`} style={backStyle}> &larr;BACK</Link></Button>
+			<Button bsStyle="primary" style={submitStyle} onClick={this.editing}>SUBMIT</Button>
+			
+        </form>
+			
 				
 			</div>
 

@@ -27,7 +27,9 @@ const style2={
 	color:'white'
 }
 const style3={
-	marginLeft:'47%'
+	padding:'10px',
+	width:'104px',
+	margin:'8px'
 }
 
 const style4={
@@ -66,9 +68,19 @@ const deleteStyle={
 	marginLeft:'7px'
 }
 
+
+
 const bufferDiv={
 	
 	height:'66px'
+}
+
+const form={
+	textAlign:'center'
+}
+
+const buttonDiv={
+	textAlign:'center'
 }
 
 
@@ -224,17 +236,17 @@ render(){
 
 			<div>
 			
-			<a href={this.state.url}>Form</a>
-			
 
 			<h1 style={style2}>{this.props.match.params.exercise}</h1>
-
+			<div style={buttonDiv}>
 			<OverlayTrigger placement="right" overlay={tooltip}>
+
 			<Button bsStyle="primary" style={style3}onClick={this.han}>ADD ENTRY</Button>
-				
-			</OverlayTrigger>
 			
 				
+			</OverlayTrigger>
+			<a href={this.state.url}><Button bsStyle="primary" style={style3}>FORM</Button></a>
+			</div>
 
 			<div style={Align}>{this.listall()}</div>
 

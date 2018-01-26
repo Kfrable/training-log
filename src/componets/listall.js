@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import axios from 'axios'
-import Single from '../componets/single'
-import Delete from '../componets/delete'
+// import Single from '../componets/single'
+// import Delete from '../componets/delete'
 import {BrowserRouter as Router, Route, Link, Switch, NavLink} from 'react-router-dom';
 import {Panel,Heading,Title,Body,Modal,Header,Footer,Button,Tooltip,
  OverlayTrigger,Well,Alert} from 'react-bootstrap';
@@ -20,13 +20,14 @@ const tooltip2 = (
 
 const style = {
   border:'black solid',
-  height:'483px',
+  height:'488px',
   width:'242px',
   display:'inline-block',
   margin:'10px',
   textAlign:'center',
   backgroundColor:'white',
-  opacity: '.8'
+  opacity: '.8',
+  boxShadow: '13px 16px 13px 6px black'
 }
 
 const style2={
@@ -96,6 +97,15 @@ const modalStyle={
 	color:'white'
 }
 
+// const pannelTitle={
+// 	backgroundCcolor: '#666666',
+//     '-webkit-background-clip': 'text',
+//     '-moz-background-clip': 'text',
+//     backgroundClip: 'text',
+//      color: 'transparent',
+//     textShadow: 'black 0px 3px 3px'
+// }
+
 
 
 class All extends Component{
@@ -149,11 +159,11 @@ class All extends Component{
 		 let n = date.toDateString()
 
     
-      return(<form key={i} style={style} onClick={this.gettingOne}> 
+      return(<form key={i} style={style} onClick={this.gettingOne} > 
 
         <Panel>
 			<Panel.Heading>
-				<Panel.Title componentClass="h3">
+				<Panel.Title >
 					Weight
 				</Panel.Title>
 			</Panel.Heading>
@@ -284,7 +294,7 @@ render(){
 	const show = this.state.modal
 	return(
 		
-			<div>
+			<div className='fade-in one'>
 			
 
 			<h1 style={style2}>{this.props.match.params.exercise}</h1>

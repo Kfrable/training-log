@@ -1,17 +1,24 @@
 import React,{Component} from 'react';
 import axios from 'axios';
 
+const style={
+	height:'281px',
+	width:'450px'
+}
 class Add extends Component{
 	constructor(){
 		super()
+		
 	}
+
 
 render(){
 	return(
-		<div>
+		
 
-		<h1>hiiiiiiiiiiiiiiiiiiiiiiiiiii</h1>
-		</div>
+		<div id="f1_container">
+
+</div>
 
 		)
 	}

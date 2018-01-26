@@ -12,7 +12,7 @@ import Profile from './componets/profile'
 
 
 const backGroundStyle={
-  backgroundImage:"url('http://www.dohertysgym.com/wp-content/uploads/Dohertys-Gym-24-7-Campbellfield-img15-min.jpg')",
+  backgroundImage:"url('../trainglogImg.jpg')",
   backgroundRepeat:'no-repeat',
   
    backgroundSize: 'cover',
@@ -54,6 +54,7 @@ class App extends Component {
         </div>
         </Router>
         <div style={bufferDiv}></div>
+        
         <Footer/>
         
       </div>

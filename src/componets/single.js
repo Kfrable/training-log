@@ -58,7 +58,8 @@ const stylePannel={
   width:'348px',
   textAlign:'center',
   backgroundColor:'white',
-  opacity: '.8'
+  opacity: '.8',
+  boxShadow: '11px 8px 8px 3px black'
 }
 
 class Single extends Component{
@@ -133,10 +134,10 @@ class Single extends Component{
 
 	render(){
 		return(
-			<div>
+			<div className='fade-in one parent perspective'>
 				
 				<h1 style={textStyle1}>EDIT</h1>
-				<form  style={stylePannel} > 
+				<form  style={stylePannel} className="child"> 
 
         <Panel>
 			<Panel.Heading>

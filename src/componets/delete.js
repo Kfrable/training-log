@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import axios from 'axios';
-import {Title,Body,Modal,Header,Footer,Button} from 'react-bootstrap';
+import {Modal,Button} from 'react-bootstrap';
 
 
 class Delete extends Component{

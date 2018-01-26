@@ -1,32 +1,55 @@
 import React,{Component} from 'react';
 import axios from 'axios';
-// import Footer from '../componets/footer'
+ import Add from '../componets/add'
 import {
   Carousel,Item,Caption,wellInstance,Well,Jumbotron,Image
 } from 'react-bootstrap';
 
 const style={
-	border:'solid black',
-	height:'388px',
-	width:'75%',
+	// border:'solid black',
+	// height:'388px',
+	width:'91%',
 	margin:'0 auto',
-	marginTop: '117px',
-	opacity:'.8',
-	backgroundColor:'white'
+	marginTop: '20%',
+	
+	// backgroundColor:'white',
+	boxShadow: '11px 8px 8px 3px black',
+	
+ 
 }
 
 const textStyle={
 	textAlign:'center',
 	// fontSize:'64px',
-	color:'black',
+	color:'rgb(85,85,85)',
 	fontFamily:"fantasy",
-	fontSize:'38px'
+	fontSize:'38px',
+	textShadow: '-4px 2px 18px rgb(85,85,85)',
+	// color: 'darkgray',
+	font: '35px LeagueGothicRegular',
+	overflow: 'hidden', 
+  borderRight: '.15em solid orange', 
+  whiteSpace: 'nowrap',
+  margin: '0 auto', 
+  letterSpacing: '.15em', 
+  animation: 'typing 3.5s steps(40, end),blink-caret .75s step-end infinite'
 }
 
+const textStyle1={
+	textAlign:'center',
+	// fontSize:'64px',
+	color:'rgb(85,85,85)',
+	fontFamily:"fantasy",
+	fontSize:'38px',
+	textShadow: '-4px 2px 18px rgb(85,85,85)',
+	// color: 'darkgray',
+	
+}
 const imgStyle={
 	height:'400px',
 	width:'50%'
 }
+
 
 
 class Insperation extends Component{
@@ -56,15 +79,18 @@ class Insperation extends Component{
 
 	render(){
 		return(
-			<div>
-				<div style={style}>
+			<div  >
+				
 
 				    {this.quote()}
-				    <Jumbotron> <p style={textStyle}>{this.state.theQuote}</p></Jumbotron>
+				    <Jumbotron  style={style} className="fade-in two parent perspective"> <p  style={textStyle1} className='child'>
+				    {this.state.theQuote}</p>
+			
+				    </Jumbotron>
 				    
-				</div>
 
-				
+
+				<Add/>
 				
 			</div>
 			)

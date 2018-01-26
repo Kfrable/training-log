@@ -18,8 +18,8 @@ class Footer extends Component{
 	render(){
 		return(
 			<div>
-				
-  <Well bsSize="small" style={style}>&#8258;Training Log</Well>
+				<footer>&#8258;Training Log</footer>
+  
 	</div>
 			)
 	}

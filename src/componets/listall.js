@@ -294,7 +294,7 @@ render(){
 	const show = this.state.modal
 	return(
 		
-			<div className='fade-in one'>
+			<div className='fade-in one '>
 			
 
 			<h1 style={style2}>{this.props.match.params.exercise}</h1>
@@ -361,7 +361,7 @@ render(){
 		
 			
 			
-			<div style={bufferDiv}></div>
+			
 			 </div>
 		)
 }

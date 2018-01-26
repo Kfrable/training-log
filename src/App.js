@@ -32,7 +32,7 @@ class App extends Component {
      
     return (
       
-      <div className="App" style={backGroundStyle}>
+      <div className="App main-container" style={backGroundStyle}>
       
         
        
@@ -48,12 +48,12 @@ class App extends Component {
           <Route exact path='/:exercise/:id'  component={Single} />
           <Route exact path='/profile/profile/profile'  component={Profile} />
           
-
+          
           
         </Switch>
         </div>
         </Router>
-        <div style={bufferDiv}></div>
+        
         
         <Footer/>
         

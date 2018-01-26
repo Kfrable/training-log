@@ -55,7 +55,7 @@ const stylePannel={
 	margin:'0 auto',
 	border:'black solid',
   height:'483px',
-  width:'348px',
+  width:'322px',
   textAlign:'center',
   backgroundColor:'white',
   opacity: '.8',
@@ -134,7 +134,7 @@ class Single extends Component{
 
 	render(){
 		return(
-			<div className='fade-in one parent perspective'>
+			<div className='fade-in one parent perspective '>
 				
 				<h1 style={textStyle1}>EDIT</h1>
 				<form  style={stylePannel} className="child"> 

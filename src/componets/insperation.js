@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import axios from 'axios';
  import Add from '../componets/add'
+ import Footer from '../componets/footer'
 import {
   Carousel,Item,Caption,wellInstance,Well,Jumbotron,Image
 } from 'react-bootstrap';
@@ -79,7 +80,7 @@ class Insperation extends Component{
 
 	render(){
 		return(
-			<div  >
+			<div>
 				
 
 				    {this.quote()}
@@ -90,7 +91,7 @@ class Insperation extends Component{
 				    
 
 
-				<Add/>
+				
 				
 			</div>
 			)
